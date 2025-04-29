@@ -64,128 +64,111 @@ This repository documents my path from CUDA fundamentals to optimizing AI kernel
 
 ---
 
+## 📘 CUDA Mini-Projects Timeline
+
+This section breaks down the CUDA mini-projects aligned with chapters from the book  
+**"Programming Massively Parallel Processors: A Hands-on Approach"**  
+Each mini-project builds core GPU programming skills for AI kernel optimization.
+
+---
+
+### 📗 Chapters 1–4: Basic CUDA Programming
+
+**Concepts:**
+- Thread hierarchy (thread, block, grid)
+- Kernel launching
+- Host vs Device memory
+
+**Mini-Projects:**
+- ✅ **Vector Addition** – Naive version (each thread adds one element)
+- ✅ **2D Matrix Addition** – Threads organized in 2D grid
+- ✅ **Vector Scaling** – Multiply vector elements by a scalar
+
+---
+
+### 📘 Chapter 5: Memory and Data Locality
+
+**Concepts:**
+- Global vs Shared memory
+- Memory coalescing
+
+**Mini-Projects:**
+- ✅ **Shared Memory Matrix Add** – Rewrite matrix add using shared memory tiling
+- ✅ **Global Memory Coalescing Checker** – Write one version that breaks coalescing and compare with an optimized one using Nsight Compute
+
+---
+
+### 📙 Chapter 6: Parallel Patterns – Reduction
+
+**Concepts:**
+- Reduction (sum, max, min)
+
+**Mini-Projects:**
+- ✅ **Sum Reduction Kernel** – Parallel reduction using grid-stride loops
+- ✅ **Max Reduction Kernel** – Find maximum value using warp shuffles (optional advanced version)
+
+---
+
+### 📒 Chapter 7: Parallel Scan (Prefix Sum)
+
+**Concepts:**
+- Inclusive vs Exclusive scan
+- Work-efficient vs Naive scan
+
+**Mini-Projects:**
+- ✅ **Prefix Sum (Naive)** – Simple parallel scan using shared memory
+- ✅ **Prefix Sum (Work-Efficient)** – Use Blelloch scan or similar work-efficient strategy
+
+---
+
+### 📕 Chapters 8–9: Tiling and Memory Optimization
+
+**Concepts:**
+- Matrix tiling for GEMM
+- Shared memory optimizations
+
+**Mini-Projects:**
+- ✅ **Naive GEMM (Matrix Multiply)** – Row-by-col dot-product (no shared memory)
+- ✅ **Tiled GEMM with Shared Memory** – Use tiling to load shared blocks and improve locality
+- ✅ **Compare Naive vs Tiled performance** – Use Nsight Compute metrics
+
+---
+
+### 📓 Chapter 10: Additional Patterns
+
+**Concepts:**
+- Histograms
+- Sparse matrix ops
+
+**Mini-Projects:**
+- ✅ **Histogram Kernel** – Bin values into histogram (use atomics carefully)
+- ✅ **Sparse Matrix-Vector Multiply (SpMV)** – Bonus: Practice memory access efficiency
+
+---
+
+### 📔 Chapters 11+: Advanced Topics
+
+**Concepts:**
+- Streams and overlapping kernels
+- Occupancy optimization
+- Warp-level primitives
+
+**Mini-Projects:**
+- ✅ **Multi-Stream Vector Add** – Use streams to overlap compute and memory copies
+- ✅ **Warp-Level Reduction** – Use warp shuffles (`__shfl_xor_sync`) for faster reductions
+
+---
+
+## 🧠 Bonus: AI-Specific CUDA Mini-Projects
+
+These mirror real-world kernels used in AI/ML frameworks like PyTorch and TensorFlow.
+
+**Mini-Projects:**
+- ✅ **Softmax Kernel** – Normalize logits in-place
+- ✅ **LayerNorm Kernel** – Normalize and scale inputs across feature dimensions
+
+
 ## 🧪 Mini Projects
-
-Chapters 1–4: Basic CUDA Programming
-
-Concepts:
-    - Thread hierarchy
-    - Kernel launching
-    - Device vs Host memory
-
-Mini-Projects:
-
-    Vector Addition: Naive version (each thread adds one element)
-
-    2D Matrix Addition: Threads organized in 2D grids
-
-    Vector Scaling: Multiply vector elements by a scalar
-
-Chapter 5: Memory and Data Locality
-
-Concepts:
-
-    Global vs Shared memory
-
-    Memory coalescing
-
-Mini-Projects:
-
-    Shared Memory Matrix Addition: Rewrite previous matrix addition using shared memory tiles.
-
-    Global Memory Coalescing Checker: Write a program that intentionally breaks coalescing, and then fix it to measure performance difference.
-
-Chapter 6: Parallel Patterns - Reduction
-
-Concepts:
-
-    Reduction (sum, max)
-
-Mini-Projects:
-
-    Sum Reduction Kernel:
-    Write a kernel to compute the sum of an array.
-
-    Max Reduction Kernel:
-    Find the maximum element in a large array using warp shuffles if you want to go deeper.
-
-Chapter 7: Parallel Scan (Prefix Sum)
-
-Concepts:
-
-    Exclusive and Inclusive scan
-
-    Work-efficient vs naive scan
-
-Mini-Projects:
-
-    Prefix Sum Kernel (Naive):
-    Parallel inclusive scan using basic threads.
-
-    Prefix Sum Kernel (Optimized):
-    Use work-efficient scan (Blelloch scan algorithm).
-
-Chapter 8–9: Tiling and Memory Optimization
-
-Concepts:
-
-    Tiling for matrix multiplication
-
-    Shared memory optimization
-
-Mini-Projects:
-
-    Naive Matrix Multiplication (GEMM):
-    No shared memory, just indexing.
-
-    Tiled GEMM (Shared Memory):
-    Use tiling with shared memory for better performance.
-
-    Compare naive vs tiled performance using Nsight Compute.
-
-Chapter 10: Additional Patterns
-
-Concepts:
-
-    Histograms
-
-    Sparse Matrix Operations
-
-Mini-Projects:
-
-    Histogram Kernel:
-    Compute a histogram of values (pay attention to atomic operations).
-
-    Sparse Matrix-Vector Multiplication (SpMV):
-    If you feel adventurous, it's great for memory-access pattern learning.
-
-Chapters 11+: Advanced Topics
-
-Concepts:
-
-    Streams, concurrency
-
-    Occupancy optimization
-
-    Warp-level primitives
-
-Mini-Projects:
-
-    Multi-Stream Vector Addition:
-    Overlap memory copies and kernel execution using streams.
-
-    Warp-Reduction Kernel:
-    Do sum reduction within a warp using warp shuffle instructions.
-
-Bonus: AI-specific Mini-Projects
-
-Once you finish these and want to start blending into AI ops:
-
-    Softmax Kernel: Implement Softmax for a batch of vectors.
-
-    LayerNorm Kernel: Implement simple LayerNorm without framework help.
-
-These skills map directly to real AI framework kernels (like PyTorch, TensorFlow).
 
 | # | Project | Status | Notes |
 |--|---------|--------|-------|
