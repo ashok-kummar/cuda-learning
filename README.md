@@ -1,29 +1,66 @@
-# 🚀 CUDA Learning Plan & Progress Tracker
+# 🚀 CUDA Learning Journey & Roadmap
 
-Welcome to my GPU learning journey! This README documents my roadmap, challenges, and progress as I learn CUDA for AI optimization and parallel programming.
+Welcome to my GPU learning journey!  
+This repository documents my path from CUDA fundamentals to optimizing AI kernels for production-level performance.
 
 ---
 
-## 📘 Learning Resource
+## 📘 Primary Learning Resource
 
-**Main Book:**  
+**Book:**  
 > *Programming Massively Parallel Processors: A Hands-on Approach*  
 > Authors: David B. Kirk, Wen-mei W. Hwu
 
 ---
 
-## 🧭 Roadmap
+## 🧭 Learning Phases
 
-### ✅ Phase 1: Fundamentals
-- [ ] Set up CUDA development environment
-- [ ] Learn CUDA execution model (threads, blocks, grids)
-- [ ] Implement vector addition in CUDA
-- [ ] Explore different `threadsPerBlock` sizes
-- [ ] Learn memory hierarchy (global, shared, registers)
-- [ ] Write clean project structure with CMake
+### 🟢 Phase 1: Fundamentals
+> Goal: Learn the CUDA execution model and write basic kernels.
 
-### 🔄 Weekly Progress Updates
-I'll update this section weekly with notes and completed challenges.
+- [ ] Set up CUDA dev environment
+- [ ] Learn thread/block/grid hierarchy
+- [ ] Write first CUDA program (vector addition)
+- [ ] Experiment with block sizes
+- [ ] Understand memory hierarchy (global, shared, registers)
+- [ ] Build CMake-based template
+
+### 🔵 Phase 2: Intermediate Kernels
+> Goal: Write more complex and optimized kernels using shared memory.
+
+- [ ] Matrix addition and multiplication
+- [ ] Use of shared memory (tiling)
+- [ ] Learn about bank conflicts and coalesced access
+- [ ] Reduction (sum) using tree method
+- [ ] Warp-level intrinsics (shuffle)
+- [ ] Prefix sum (scan)
+
+### 🟣 Phase 3: Performance Profiling
+> Goal: Profile and optimize your kernels.
+
+- [ ] Learn to use Nsight Compute
+- [ ] Interpret key metrics: occupancy, memory throughput, warp efficiency
+- [ ] Optimize memory usage (shared, register, global)
+- [ ] Time kernels using `cudaEvent_t`
+- [ ] Measure speedups vs CPU baseline
+
+### 🔶 Phase 4: Advanced AI Ops
+> Goal: Build and optimize real AI operations in CUDA.
+
+- [ ] Softmax, LayerNorm, GELU kernels
+- [ ] Fuse multiple ops into one kernel
+- [ ] Mixed precision (`float16` / Tensor Cores optional)
+- [ ] Workload balancing (row-wise, warp-wise)
+- [ ] Use of streams for overlapping compute and memcpy
+
+### 🟥 Phase 5: Systems Integration
+> Goal: Build pipelines that combine multiple CUDA ops.
+
+- [ ] Use `cudaStream_t` for concurrency
+- [ ] Profile full app with Nsight Systems
+- [ ] Measure end-to-end latency
+- [ ] Build benchmarking framework
+- [ ] Prepare real-time AI op use cases (e.g. inference block)
 
 ---
 
@@ -31,16 +68,16 @@ I'll update this section weekly with notes and completed challenges.
 
 | # | Project | Status | Notes |
 |--|---------|--------|-------|
-| 1 | Vector Add (1D) | ☐ | First working CUDA kernel |
+| 1 | Vector Add (1D) | ☐ | First working kernel |
 | 2 | Vector Add (2D grid) | ☐ | Practice grid indexing |
-| 3 | Matrix Add | ☐ | Practice memory layout |
-| 4 | Matrix Multiplication (naive) | ☐ | |
-| 5 | Matrix Multiplication (tiled/shared memory) | ☐ | Optimize for performance |
-| 6 | Reduction (sum) | ☐ | Tree-based and warp-shuffle |
-| 7 | Prefix Sum (scan) | ☐ | Use for stream compaction |
-| 8 | Histogram | ☐ | Practice atomics |
-| 9 | LayerNorm | ☐ | Mini AI-op kernel |
-| 10 | Multi-stream overlaps | ☐ | Use `cudaStream_t` |
+| 3 | Matrix Add | ☐ | Memory layout practice |
+| 4 | Matrix Multiply (naive) | ☐ | Row-col inner product |
+| 5 | Matrix Multiply (tiled) | ☐ | Shared memory optimization |
+| 6 | Sum Reduction | ☐ | Tree + warp shuffle |
+| 7 | Prefix Sum (Scan) | ☐ | Used in stream compaction |
+| 8 | Histogram | ☐ | Atomics and privatization |
+| 9 | LayerNorm | ☐ | AI kernel |
+| 10 | Multi-stream Overlap | ☐ | Use `cudaStream_t` |
 
 ---
 
@@ -48,61 +85,37 @@ I'll update this section weekly with notes and completed challenges.
 
 | Challenge | Description | Done |
 |----------|-------------|------|
-| 1 | 1D & 2D Vector Add + Grid indexing | ☐ |
-| 2 | Experiment with different block sizes | ☐ |
-| 3 | Error handling macro for all CUDA calls | ☐ |
-| 4 | Rewrite matrix add with shared memory | ☐ |
-| 5 | Memory coalescing vs strided access | ☐ |
+| 1 | 1D/2D Vector Add + Grid indexing | ☐ |
+| 2 | Try multiple block sizes | ☐ |
+| 3 | Add error handling macro | ☐ |
+| 4 | Rewrite Matrix Add with shared mem | ☐ |
+| 5 | Memory coalescing vs strided | ☐ |
 | 6 | Use `cudaOccupancyMaxPotentialBlockSize` | ☐ |
-| 7 | Tree-based sum reduction | ☐ |
-| 8 | Warp-level shuffle-based reduction | ☐ |
-| 9 | Stream compaction with prefix sum | ☐ |
-| 10 | Naive matrix multiplication | ☐ |
-| 11 | Tiled matrix mult (shared memory) | ☐ |
-| 12 | Compare tile sizes: 8x8, 16x16, 32x32 | ☐ |
-| 13 | Histogram optimization (privatization) | ☐ |
-| 14 | Overlapping memcopy + compute (streams) | ☐ |
-| 15 | Softmax kernel | ☐ |
-| 16 | Fused LayerNorm (mean/var/scale) | ☐ |
-| 17 | Memory optimization of AI op | ☐ |
+| 7 | Tree Reduction | ☐ |
+| 8 | Warp Shuffle Reduction | ☐ |
+| 9 | Prefix Scan | ☐ |
+| 10 | Histogram with privatization | ☐ |
+| 11 | Tiled Matrix Multiply | ☐ |
+| 12 | Softmax kernel | ☐ |
+| 13 | Fused LayerNorm | ☐ |
+| 14 | Stream Overlap | ☐ |
+| 15 | Benchmark CUDA vs CPU | ☐ |
 
 ---
 
-## 🔧 Tools & Profiling
+## 📦 Profiling Tools
 
-### 🔹 Profiler
+### Nsight Compute (ncu)
+> For analyzing individual CUDA kernels
 
-- **Start with:** `Nsight Compute (ncu)`
-- **Later:** `Nsight Systems (nsys)` for full-app timeline
+- Metrics: occupancy, memory throughput, warp efficiency
+- Command: `ncu ./your_binary`
 
-> Nsight Compute is ideal when optimizing a single kernel  
-> Nsight Systems helps when analyzing full workloads, memory copy overlaps, and multiple streams.
+### Nsight Systems (nsys)
+> For analyzing full program timeline
 
-### 🔹 Planned Guides
-
-- [ ] Nsight Compute Starter Guide ✅ (queued)
-- [ ] Advanced Template with Timing, Testing, CMake, Profiling (coming soon)
-
----
-
-## 🔁 Next Steps
-
-- [ ] Complete 2–3 mini-projects
-- [ ] Switch to advanced CUDA project template
-- [ ] Start performance profiling using Nsight Compute
-- [ ] Begin automated unit testing of kernel outputs
-
----
-
-## 🥇 Badge Milestones
-
-| Badge | Requirement | Earned |
-|-------|-------------|--------|
-| CUDA Beginner | Complete 5 beginner challenges | ☐ |
-| Memory Master | Optimize shared/coalesced memory kernels | ☐ |
-| Warp Wizard | Use warp intrinsics (shuffle, ballots) | ☐ |
-| Performance Profiler | Profile and improve kernel runtime | ☐ |
-| AI Kernel Pro | Implement and optimize AI-op kernel | ☐ |
+- Measure: CPU-GPU overlaps, kernel launch delays, memcpy overlaps
+- Command: `nsys profile ./your_binary`
 
 ---
 
@@ -110,23 +123,8 @@ I'll update this section weekly with notes and completed challenges.
 
 | Week | Highlights |
 |------|------------|
-| Week 1 | Started vector add, set up CMake, began Challenge 1 |
+| Week 1 | Set up project, completed 1D vector add |
 | Week 2 | _[to be filled]_ |
 | Week 3 | _[to be filled]_ |
 
 ---
-
-## 💬 Notes & Learnings
-
-> “Optimization without measurement is just guesswork.”  
-> Profiling is as important as coding — always measure performance and verify correctness!
-
----
-
-## 🙌 Credits
-
-This roadmap was designed with guidance from an AI mentor powered by ChatGPT.  
-Structured like a real-world GPU engineering journey 🚀
-
----
-
