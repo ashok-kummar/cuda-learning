@@ -69,12 +69,9 @@ This repository documents my path from CUDA fundamentals to optimizing AI kernel
 Chapters 1–4: Basic CUDA Programming
 
 Concepts:
-
-    Thread hierarchy
-
-    Kernel launching
-
-    Device vs Host memory
+    - Thread hierarchy
+    - Kernel launching
+    - Device vs Host memory
 
 Mini-Projects:
 
