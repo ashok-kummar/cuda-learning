@@ -66,6 +66,130 @@ This repository documents my path from CUDA fundamentals to optimizing AI kernel
 
 ## 🧪 Mini Projects
 
+Chapters 1–4: Basic CUDA Programming
+
+Concepts:
+
+    Thread hierarchy
+
+    Kernel launching
+
+    Device vs Host memory
+
+Mini-Projects:
+
+    Vector Addition: Naive version (each thread adds one element)
+
+    2D Matrix Addition: Threads organized in 2D grids
+
+    Vector Scaling: Multiply vector elements by a scalar
+
+Chapter 5: Memory and Data Locality
+
+Concepts:
+
+    Global vs Shared memory
+
+    Memory coalescing
+
+Mini-Projects:
+
+    Shared Memory Matrix Addition: Rewrite previous matrix addition using shared memory tiles.
+
+    Global Memory Coalescing Checker: Write a program that intentionally breaks coalescing, and then fix it to measure performance difference.
+
+Chapter 6: Parallel Patterns - Reduction
+
+Concepts:
+
+    Reduction (sum, max)
+
+Mini-Projects:
+
+    Sum Reduction Kernel:
+    Write a kernel to compute the sum of an array.
+
+    Max Reduction Kernel:
+    Find the maximum element in a large array using warp shuffles if you want to go deeper.
+
+Chapter 7: Parallel Scan (Prefix Sum)
+
+Concepts:
+
+    Exclusive and Inclusive scan
+
+    Work-efficient vs naive scan
+
+Mini-Projects:
+
+    Prefix Sum Kernel (Naive):
+    Parallel inclusive scan using basic threads.
+
+    Prefix Sum Kernel (Optimized):
+    Use work-efficient scan (Blelloch scan algorithm).
+
+Chapter 8–9: Tiling and Memory Optimization
+
+Concepts:
+
+    Tiling for matrix multiplication
+
+    Shared memory optimization
+
+Mini-Projects:
+
+    Naive Matrix Multiplication (GEMM):
+    No shared memory, just indexing.
+
+    Tiled GEMM (Shared Memory):
+    Use tiling with shared memory for better performance.
+
+    Compare naive vs tiled performance using Nsight Compute.
+
+Chapter 10: Additional Patterns
+
+Concepts:
+
+    Histograms
+
+    Sparse Matrix Operations
+
+Mini-Projects:
+
+    Histogram Kernel:
+    Compute a histogram of values (pay attention to atomic operations).
+
+    Sparse Matrix-Vector Multiplication (SpMV):
+    If you feel adventurous, it's great for memory-access pattern learning.
+
+Chapters 11+: Advanced Topics
+
+Concepts:
+
+    Streams, concurrency
+
+    Occupancy optimization
+
+    Warp-level primitives
+
+Mini-Projects:
+
+    Multi-Stream Vector Addition:
+    Overlap memory copies and kernel execution using streams.
+
+    Warp-Reduction Kernel:
+    Do sum reduction within a warp using warp shuffle instructions.
+
+Bonus: AI-specific Mini-Projects
+
+Once you finish these and want to start blending into AI ops:
+
+    Softmax Kernel: Implement Softmax for a batch of vectors.
+
+    LayerNorm Kernel: Implement simple LayerNorm without framework help.
+
+These skills map directly to real AI framework kernels (like PyTorch, TensorFlow).
+
 | # | Project | Status | Notes |
 |--|---------|--------|-------|
 | 1 | Vector Add (1D) | ☐ | First working kernel |
