@@ -167,6 +167,7 @@ These mirror real-world kernels used in AI/ML frameworks like PyTorch and Tensor
 - ✅ **Softmax Kernel** – Normalize logits in-place
 - ✅ **LayerNorm Kernel** – Normalize and scale inputs across feature dimensions
 
+---
 
 ## 🧪 Mini Projects
 
